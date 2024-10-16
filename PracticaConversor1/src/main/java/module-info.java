@@ -11,6 +11,7 @@ module com.example.practicaconversor1 {
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
     requires java.sql;
+    requires AccesoBBDDMoneda;
 
     opens com.example.practicaconversor1 to javafx.fxml;
     exports com.example.practicaconversor1;
