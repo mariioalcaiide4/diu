@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.practicaconversor1.controller.ConversorController">
+   <children>
+      <Label layoutX="106.0" layoutY="119.0" text="EUROS" />
+      <Label layoutX="426.0" layoutY="119.0" text="DOLARES" />
+      <Label layoutX="205.0" layoutY="23.0" text="CONVERTIDOR DE MONEDAS">
+         <padding>
+            <Insets right="12.0" top="15.0" />
+         </padding>
+      </Label>
+      <TextField layoutX="46.0" layoutY="186.0" />
+      <TextField layoutX="374.0" layoutY="186.0" />
+   </children>
+</AnchorPane>
