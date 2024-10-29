@@ -16,10 +16,11 @@ import javafx.beans.property.StringProperty;
  */
 public class Person {
 
+    private final IntegerProperty code;
     private final StringProperty firstName;
     private final StringProperty lastName;
     private final StringProperty street;
-    private final IntegerProperty postalCode;
+    private final StringProperty postalCode;
     private final StringProperty city;
     private final ObjectProperty<LocalDate> birthday;
 
@@ -27,7 +28,7 @@ public class Person {
      * Default constructor.
      */
     public Person() {
-        this(null, null);
+        this(null, null, null, null, null, null, null);
     }
 
     /**
@@ -36,16 +37,24 @@ public class Person {
      * @param firstName
      * @param lastName
      */
-    public Person(String firstName, String lastName) {
+    public Person(Integer code, String firstName, String lastName, String street, String postalCode, String city, LocalDate birthday) {
+        this.code = new SimpleIntegerProperty(code);
         this.firstName = new SimpleStringProperty(firstName);
         this.lastName = new SimpleStringProperty(lastName);
-
-        // Some initial dummy data, just for convenient testing.
-        this.street = new SimpleStringProperty("some street");
-        this.postalCode = new SimpleIntegerProperty(1234);
-        this.city = new SimpleStringProperty("some city");
-        this.birthday = new SimpleObjectProperty<LocalDate>(LocalDate.of(1999, 2, 21));
+        this.street = new SimpleStringProperty(street);
+        this.postalCode = new SimpleStringProperty(postalCode);
+        this.city = new SimpleStringProperty(city);
+        this.birthday = new SimpleObjectProperty(birthday);
     }
+
+    public int getCode() {
+        return code.get();
+    }
+
+    public void setCode(int code) {
+        this.code.set(code);
+    }
+
 
     public String getFirstName() {
         return firstName.get();
@@ -83,15 +92,15 @@ public class Person {
         return street;
     }
 
-    public int getPostalCode() {
+    public String getPostalCode() {
         return postalCode.get();
     }
 
-    public void setPostalCode(int postalCode) {
+    public void setPostalCode(String postalCode) {
         this.postalCode.set(postalCode);
     }
 
-    public IntegerProperty postalCodeProperty() {
+    public StringProperty postalCodeProperty() {
         return postalCode;
     }
 

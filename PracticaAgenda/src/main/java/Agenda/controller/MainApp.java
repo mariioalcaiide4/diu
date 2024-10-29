@@ -1,30 +1,44 @@
 package Agenda.controller;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.time.LocalDate;
+import java.util.ArrayList;
 
+import Agenda.modelo.AgendaModelo;
+import Agenda.modelo.ExcepcionPersona;
 import Agenda.modelo.Person;
+import Agenda.modelo.PersonVO;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import Agenda.modelo.repository.impl.ConexionJDBC;
+import Agenda.modelo.repository.impl.PersonRepositoryImpl;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class MainApp extends Application {
 
-    private Stage primaryStage;
-    private BorderPane rootLayout;
-    private ObservableList<Person> personData = FXCollections.observableArrayList();
+    //Creo una lista observable para las personas y instancio el modelo
 
-    /**
-     * Constructor
-     */
+    private ObservableList<Person> personData = FXCollections.observableArrayList();
+    AgendaModelo agendaModelo;
+
+
+
     public MainApp() {
+        PersonRepositoryImpl personRepository = new PersonRepositoryImpl();
+        agendaModelo = new AgendaModelo();
+        agendaModelo.setPersonRepository(personRepository);
+        ArrayList<Person> listaPersonas = agendaModelo.obtenerPersonas();
+        personData.addAll(listaPersonas);
+
         // Add some sample data
-        personData.add(new Person("Hans", "Muster"));
+        personData.add(new Person("Pikiko", "Maravilla"));
         personData.add(new Person("Ruth", "Mueller"));
         personData.add(new Person("Heinz", "Kurz"));
         personData.add(new Person("Cornelia", "Meier"));
@@ -35,12 +49,36 @@ public class MainApp extends Application {
         personData.add(new Person("Martin", "Mueller"));
     }
 
-    /**
-     * Returns the data as an observable list of Persons.
-     * @return
-     */
+
     public ObservableList<Person> getPersonData() {
         return personData;
+    }
+
+    private Stage primaryStage;
+    private BorderPane rootLayout;
+
+    public void start(Stage primaryStage) {
+        this.primaryStage = primaryStage;
+        this.primaryStage.setTitle("Agenda");
+        initRootLayout();
+        showPersonOverview();
+
+    }
+
+    public void initRootLayout() {
+        try {
+            // Load root layout from fxml file.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("/Agenda/RootLayout.fxml"));
+            rootLayout = (BorderPane) loader.load();
+
+            // Show the scene containing the root layout.
+            Scene scene = new Scene(rootLayout);
+            primaryStage.setScene(scene);
+            primaryStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     // Shows the person overview inside the root layout.
@@ -56,6 +94,7 @@ public class MainApp extends Application {
 
             // Give the controller access to the main app.
             PersonOverviewController controller = loader.getController();
+            controller.setAgendaModelo
             controller.setMainApp(this);
         } catch (IOException e) {
             e.printStackTrace();
@@ -92,12 +131,7 @@ public class MainApp extends Application {
         }
     }
 
-    @Override
-    public void start(Stage primaryStage) {
-        this.primaryStage = primaryStage;
-        this.primaryStage.setTitle("Agenda");
-        initRootLayout();
-        showPersonOverview();
+
     }
 
     public void showBirthdayStatistics() {
@@ -125,31 +159,14 @@ public class MainApp extends Application {
     }
 
     // Initializes the root layout
-    public void initRootLayout() {
-        try {
-            // Load root layout from fxml file.
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainApp.class.getResource("/Agenda/RootLayout.fxml"));
-            rootLayout = (BorderPane) loader.load();
 
-            // Show the scene containing the root layout.
-            Scene scene = new Scene(rootLayout);
-            primaryStage.setScene(scene);
-            primaryStage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
-    /**
-     * Returns the main stage.
-     * @return
-     */
     public Stage getPrimaryStage() {
         return primaryStage;
     }
 
-    public static void main(String[] args) {
+  public static void main(String[] args)
         launch(args);
-    }
-}
+
+*/
+

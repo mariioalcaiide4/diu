@@ -32,10 +32,7 @@ public class PersonOverviewController {
     // Reference to the main application.
     private MainApp mainApp;
 
-    /**
-     * The constructor.
-     * The constructor is called before the initialize() method.
-     */
+
     public PersonOverviewController() {
     }
 
@@ -45,7 +42,7 @@ public class PersonOverviewController {
             firstNameLabel.setText(person.getFirstName());
             lastNameLabel.setText(person.getLastName());
             streetLabel.setText(person.getStreet());
-            postcodeLabel.setText(Integer.toString(person.getPostalCode()));
+            postcodeLabel.setText(person.getPostalCode());
             cityLabel.setText(person.getCity());
 
             birthdayLabel.setText(DateUtil.format(person.getBirthday()));
@@ -96,10 +93,7 @@ public class PersonOverviewController {
         }
     }
 
-    /**
-     * Initializes the controller class. This method is automatically called
-     * after the fxml file has been loaded.
-     */
+
     @FXML
     private void initialize() {
         // Initialize the person table with the two columns.
@@ -116,11 +110,7 @@ public class PersonOverviewController {
                 (observable, oldValue, newValue) -> showPersonDetails(newValue));
     }
 
-    /**
-     * Is called by the main application to give a reference back to itself.
-     *
-     * @param mainApp
-     */
+
     public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;
 
@@ -128,3 +118,5 @@ public class PersonOverviewController {
         personTable.setItems(mainApp.getPersonData());
     }
 }
+
+ */

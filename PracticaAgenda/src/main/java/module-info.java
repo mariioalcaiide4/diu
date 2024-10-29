@@ -18,6 +18,8 @@ module pack.scenebuilder {
 
     exports Agenda.controller;
     exports Agenda.modelo;
-    exports Agenda.diu;
-    opens Agenda.diu to javafx.fxml;
+    exports Agenda.modelo.repository;
+    opens Agenda.modelo.repository to javafx.fxml;
+    exports Agenda.modelo.repository.impl;
+    opens Agenda.modelo.repository.impl to javafx.fxml;
 }
