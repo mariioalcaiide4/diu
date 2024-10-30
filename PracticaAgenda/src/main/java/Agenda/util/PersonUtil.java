@@ -1,6 +1,6 @@
 package Agenda.util;
 
-import Agenda.modelo.Person;
+import Agenda.view.Person;
 import Agenda.modelo.PersonVO;
 
 import java.util.ArrayList;

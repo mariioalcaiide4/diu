@@ -22,4 +22,6 @@ module pack.scenebuilder {
     opens Agenda.modelo.repository to javafx.fxml;
     exports Agenda.modelo.repository.impl;
     opens Agenda.modelo.repository.impl to javafx.fxml;
+    exports Agenda.view;
+    opens Agenda.view to javafx.fxml;
 }

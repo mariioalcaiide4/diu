@@ -20,6 +20,8 @@ public class PersonRepositoryImpl implements PersonRepository {
         // Aquí debes inicializar la conexión
     }
 
+    public PersonRepositoryImpl() {}
+
     public ArrayList<PersonVO> ObtenerListaPersonas() throws ExcepcionPersona {
         try {
             Connection conn = this.conexion.conectarBD();
@@ -74,9 +76,9 @@ public class PersonRepositoryImpl implements PersonRepository {
         try {
             Connection conn = this.conexion.conectarBD();
             this.stmt = conn.createStatement();
+            Statement comando = conn.createStatement();
             String sql = String.format("DELETE FROM persona WHERE codigo = %d", idPersona);
-            this.stmt.executeUpdate(sql);
-            this.stmt.close();
+            comando.executeUpdate(sql);
             this.conexion.desconectarBD(conn);
         } catch (SQLException var5) {
             throw new ExcepcionPersona("No se ha podido realizar la eliminación");

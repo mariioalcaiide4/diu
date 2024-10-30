@@ -1,5 +1,7 @@
 package Agenda.controller;
-import Agenda.modelo.Person;
+import Agenda.modelo.AgendaModelo;
+import Agenda.modelo.ExcepcionPersona;
+import Agenda.view.Person;
 import Agenda.util.DateUtil;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -23,15 +25,15 @@ public class PersonOverviewController {
     @FXML
     private Label streetLabel;
     @FXML
-    private Label postcodeLabel;
-    @FXML
     private Label cityLabel;
+    @FXML
+    private Label postcodeLabel;
     @FXML
     private Label birthdayLabel;
 
     // Reference to the main application.
     private MainApp mainApp;
-
+    private AgendaModelo agendaModelo;
 
     public PersonOverviewController() {
     }
@@ -42,9 +44,8 @@ public class PersonOverviewController {
             firstNameLabel.setText(person.getFirstName());
             lastNameLabel.setText(person.getLastName());
             streetLabel.setText(person.getStreet());
-            postcodeLabel.setText(person.getPostalCode());
             cityLabel.setText(person.getCity());
-
+            postcodeLabel.setText(person.getPostalCode());
             birthdayLabel.setText(DateUtil.format(person.getBirthday()));
         } else {
             // Person is null, remove all the text.
@@ -58,10 +59,12 @@ public class PersonOverviewController {
     }
 
     @FXML
-    private void handleDeletePerson() {
+    private void handleDeletePerson() throws ExcepcionPersona {
         int selectedIndex = personTable.getSelectionModel().getSelectedIndex();
         if (selectedIndex >= 0) {
             personTable.getItems().remove(selectedIndex);
+            Person p = personTable.getSelectionModel().getSelectedItem();
+            agendaModelo.borrarPersona(p.getCode());
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR, "Debes tener seleccionada a una persona para borrrarla");
             alert.show();
@@ -69,21 +72,24 @@ public class PersonOverviewController {
     }
 
     @FXML
-    private void handleNewPerson() {
+    private void handleNewPerson() throws ExcepcionPersona {
         Person tempPerson = new Person();
         boolean okClicked = mainApp.showPersonEditDialog(tempPerson);
         if (okClicked) {
             mainApp.getPersonData().add(tempPerson);
+            agendaModelo.anadirPersona(tempPerson);
+            showPersonDetails(tempPerson);
         }
     }
 
     @FXML
-    private void handleEditPerson() {
+    private void handleEditPerson() throws ExcepcionPersona {
         Person selectedPerson = personTable.getSelectionModel().getSelectedItem();
         if (selectedPerson != null) {
             boolean okClicked = mainApp.showPersonEditDialog(selectedPerson);
             if (okClicked) {
                 showPersonDetails(selectedPerson);
+                agendaModelo.editarPersona(selectedPerson);
             }
 
         } else {
@@ -117,6 +123,9 @@ public class PersonOverviewController {
         // Add observable list data to the table
         personTable.setItems(mainApp.getPersonData());
     }
+
+    public void setAgendaModelo(AgendaModelo agendaModelo) {
+        this.agendaModelo = agendaModelo;
+    }
 }
 
- */

@@ -1,4 +1,4 @@
-package Agenda.modelo;
+package Agenda.view;
 
 import java.time.LocalDate;
 
@@ -28,8 +28,13 @@ public class Person {
      * Default constructor.
      */
     public Person() {
-        this(null, null, null, null, null, null, null);
-    }
+        this.code = new SimpleIntegerProperty();
+        this.firstName = new SimpleStringProperty();
+        this.lastName = new SimpleStringProperty();
+        this.street = new SimpleStringProperty();
+        this.postalCode = new SimpleStringProperty();
+        this.city = new SimpleStringProperty();
+        this.birthday = new SimpleObjectProperty();    }
 
     /**
      * Constructor with some initial data.
@@ -37,6 +42,9 @@ public class Person {
      * @param firstName
      * @param lastName
      */
+
+
+
     public Person(Integer code, String firstName, String lastName, String street, String postalCode, String city, LocalDate birthday) {
         this.code = new SimpleIntegerProperty(code);
         this.firstName = new SimpleStringProperty(firstName);

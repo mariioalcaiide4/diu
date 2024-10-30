@@ -1,36 +1,30 @@
 package Agenda.controller;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.ArrayList;
 
 import Agenda.modelo.AgendaModelo;
 import Agenda.modelo.ExcepcionPersona;
-import Agenda.modelo.Person;
-import Agenda.modelo.PersonVO;
+import Agenda.view.Person;
+import Agenda.modelo.repository.impl.ConexionJDBC;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import Agenda.modelo.repository.impl.ConexionJDBC;
 import Agenda.modelo.repository.impl.PersonRepositoryImpl;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class MainApp extends Application {
 
-    //Creo una lista observable para las personas y instancio el modelo
-
+    // Creo una lista observable para las personas y instancio el modelo
     private ObservableList<Person> personData = FXCollections.observableArrayList();
     AgendaModelo agendaModelo;
 
-
-
-    public MainApp() {
+    public MainApp() throws ExcepcionPersona {
         PersonRepositoryImpl personRepository = new PersonRepositoryImpl();
         agendaModelo = new AgendaModelo();
         agendaModelo.setPersonRepository(personRepository);
@@ -38,17 +32,16 @@ public class MainApp extends Application {
         personData.addAll(listaPersonas);
 
         // Add some sample data
-        personData.add(new Person("Pikiko", "Maravilla"));
-        personData.add(new Person("Ruth", "Mueller"));
-        personData.add(new Person("Heinz", "Kurz"));
-        personData.add(new Person("Cornelia", "Meier"));
-        personData.add(new Person("Werner", "Meyer"));
-        personData.add(new Person("Lydia", "Kunz"));
-        personData.add(new Person("Anna", "Best"));
-        personData.add(new Person("Stefan", "Meier"));
-        personData.add(new Person("Martin", "Mueller"));
+        //personData.add(new Person("Pikiko", "Maravilla"));
+        //personData.add(new Person("Ruth", "Mueller"));
+        //personData.add(new Person("Heinz", "Kurz"));
+        //personData.add(new Person("Cornelia", "Meier"));
+        //personData.add(new Person("Werner", "Meyer"));
+        //personData.add(new Person("Lydia", "Kunz"));
+        //personData.add(new Person("Anna", "Best"));
+        //personData.add(new Person("Stefan", "Meier"));
+        //personData.add(new Person("Martin", "Mueller"));
     }
-
 
     public ObservableList<Person> getPersonData() {
         return personData;
@@ -62,7 +55,6 @@ public class MainApp extends Application {
         this.primaryStage.setTitle("Agenda");
         initRootLayout();
         showPersonOverview();
-
     }
 
     public void initRootLayout() {
@@ -94,7 +86,7 @@ public class MainApp extends Application {
 
             // Give the controller access to the main app.
             PersonOverviewController controller = loader.getController();
-            controller.setAgendaModelo
+            controller.setAgendaModelo(agendaModelo);
             controller.setMainApp(this);
         } catch (IOException e) {
             e.printStackTrace();
@@ -131,9 +123,6 @@ public class MainApp extends Application {
         }
     }
 
-
-    }
-
     public void showBirthdayStatistics() {
         try {
             // Load the fxml file and create a new stage for the popup.
@@ -158,15 +147,11 @@ public class MainApp extends Application {
         }
     }
 
-    // Initializes the root layout
-
-
     public Stage getPrimaryStage() {
         return primaryStage;
     }
 
-  public static void main(String[] args)
+    public static void main(String[] args) {
         launch(args);
-
-*/
-
+    }
+}

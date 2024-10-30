@@ -1,6 +1,6 @@
 package Agenda.controller;
 
-import Agenda.modelo.Person;
+import Agenda.view.Person;
 import Agenda.util.DateUtil;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -124,14 +124,8 @@ public class PersonEditDialogController {
 
         if (postalCodeField.getText() == null || postalCodeField.getText().length() == 0) {
             errorMessage += "No valid postal code!\n";
-        } else {
-            // try to parse the postal code into an int.
-            try {
-                Integer.parseInt(postalCodeField.getText());
-            } catch (NumberFormatException e) {
-                errorMessage += "No valid postal code (must be an integer)!\n";
-            }
         }
+
 
         if (cityField.getText() == null || cityField.getText().length() == 0) {
             errorMessage += "No valid city!\n";

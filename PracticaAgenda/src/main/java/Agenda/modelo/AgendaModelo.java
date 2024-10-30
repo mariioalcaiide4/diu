@@ -2,6 +2,7 @@ package Agenda.modelo;
 
 import Agenda.modelo.repository.PersonRepository;
 import Agenda.util.PersonUtil;
+import Agenda.view.Person;
 
 import java.util.ArrayList;
 
@@ -14,7 +15,7 @@ public class AgendaModelo {
         return PersonUtil.parsePersonVOPerson(listilla);
     }
 
-    public void añadirPersona(Person persona) throws ExcepcionPersona {
+    public void anadirPersona(Person persona) throws ExcepcionPersona {
         personRepository.añadirPersona(PersonUtil.parsePersonPersonVO(persona));
     }
 
