@@ -59,6 +59,7 @@ public class PersonOverviewController {
     }
 
     @FXML
+
     private void handleDeletePerson() throws ExcepcionPersona {
         int selectedIndex = personTable.getSelectionModel().getSelectedIndex();
         if (selectedIndex >= 0) {

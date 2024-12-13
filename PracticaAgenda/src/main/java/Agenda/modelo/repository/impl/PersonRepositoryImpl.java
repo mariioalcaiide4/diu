@@ -78,8 +78,8 @@ public class PersonRepositoryImpl implements PersonRepository {
             this.stmt = conn.createStatement();
             Statement comando = conn.createStatement();
             String sql = String.format("DELETE FROM persona WHERE codigo = %d", idPersona);
-            comando.executeUpdate(sql);
-            this.conexion.desconectarBD(conn);
+                comando.executeUpdate(sql);
+                this.conexion.desconectarBD(conn);
         } catch (SQLException var5) {
             throw new ExcepcionPersona("No se ha podido realizar la eliminación");
         }

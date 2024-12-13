@@ -14,5 +14,16 @@ public interface PersonRepository {
 
     void editarPersona(PersonVO var1) throws ExcepcionPersona;
 
-    int lastId() throws ExcepcionPersona;
-}
+    int lastIdPersona() throws ExcepcionPersona;
+
+    ArrayList<PersonVO> ObtenerListaReservas() throws ExcepcionPersona;
+
+    void añadirReserva(PersonVO var1) throws ExcepcionPersona;
+
+    void borrarReserva(Integer var1) throws ExcepcionPersona;
+
+    void editarReserva(PersonVO var1) throws ExcepcionPersona;
+
+    int lastIdReserva() throws ExcepcionPersona;
+    }
+

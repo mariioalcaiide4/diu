@@ -63,6 +63,5 @@
       </GridPane>
       <Button layoutX="419.0" layoutY="357.0" mnemonicParsing="false" onAction="#handleOk" text="Añadir" />
       <Button layoutX="513.0" layoutY="357.0" mnemonicParsing="false" onAction="#handleCancel" text="Cancelar" />
-      <ProgressBar layoutX="42.0" layoutY="348.0" prefWidth="200.0" progress="0.0" />
    </children>
 </AnchorPane>
