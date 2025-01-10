@@ -1,4 +1,3 @@
-import './App.css';
 import Boton from './components/Boton'
 import Pantallita from './components/Pantallita'
 import Limpiar from './components/Limpiar'
