@@ -38,15 +38,29 @@ export default class TutorialsAdd extends Component {
             });
         }
 
-        saveTutorial(){
+        saveTutorial() {
             var data = {
                 title: this.state.title,
                 description: this.state.description,
                 published: this.state.published
             };
-
+        
             TutorialDataService.create(data)
+                .then(response => {
+                    console.log("Tutorial creado:", response.data);
+                    this.setState({
+                        id: response.data.id,
+                        title: "",
+                        description: "",
+                        published: false
+                    });
+                    alert("Tutorial guardado exitosamente!");
+                })
+                .catch(e => {
+                    console.error("Error al guardar el tutorial:", e);
+                });
         }
+        
 
         render(){
             return(
