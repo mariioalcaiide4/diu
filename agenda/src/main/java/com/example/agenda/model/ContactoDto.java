@@ -12,10 +12,10 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 public class ContactoDto {
 
-    private String id;
+    private String dni;
     private String nombre;
-    private String description;
-    private Boolean published;
-
+    private String apellido;
+    private Integer edad;
+    private Integer telefono;
 
 }

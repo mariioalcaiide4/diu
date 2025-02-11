@@ -42,8 +42,8 @@ public class AgendaController implements AgendaAPI {
 
     @Override
     @PutMapping("/agenda/{dni}")
-    public ContactoDto actualizarContacto(@RequestBody ContactoDto contacto,@PathVariable String dni) {
-        return agendaService.actualizarContacto(contacto);
+    public ContactoDto actualizarContacto(@RequestBody ContactoDto contactoDto,@PathVariable String dni) {
+        return agendaService.actualizarContacto(contactoDto, dni);
     }
 
     @Override

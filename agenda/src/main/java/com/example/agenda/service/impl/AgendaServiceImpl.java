@@ -1,9 +1,10 @@
 package com.example.agenda.service.impl;
 
-import com.example.agenda.model.Agenda;
-import com.example.agenda.model.AgendaDto;
+import com.example.agenda.model.Contacto;
+import com.example.agenda.model.ContactoDto;
 import com.example.agenda.repository.AgendaRepository;
 import com.example.agenda.service.AgendaService;
+import com.example.agenda.util.AgendaMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,82 +20,74 @@ public class AgendaServiceImpl implements AgendaService {
     private AgendaRepository agendaRepository;
 
     @Override
-    public List<AgendaDto> getAllTutorials(){
-        List<Agenda> agendaList = agendaRepository.findAll();
+    public List<ContactoDto> getAllContacts(){
+        List<Contacto> agendaList = agendaRepository.findAll();
         return agendaList.stream()
                 .map(AgendaMapper::agendaMapperEntityToDto)
                 .collect(Collectors.toList());
     }
 
     @Override
-    public Optional<AgendaDto> getTutorialById(String id) {
-        Optional<Tutorials> tutorialOptional = agendaRepository.findById(id);
+    public Optional<ContactoDto> getContactById(String dni) {
+        Optional<Contacto> tutorialOptional = agendaRepository.findById(dni);
 
-        return tutorialOptional.map(TutorialsMapper::tutorialsMapperEntityToDto);
+        return tutorialOptional.map(AgendaMapper::agendaMapperEntityToDto);
     }
 
     @Override
-    public List<TutorialsDto> findByTitleContaining(String title) {
-        List<Tutorials> tutorialOptional = agendaRepository.findByTitleContaining(title);
+    public List<ContactoDto> findByNameContaining(String nombre) {
+        List<Contacto> agendaOptional = agendaRepository.findByNameContaining(nombre);
 
-        return TutorialsMapper.tutorialsListMapperEntityToDto(tutorialOptional);
+        return AgendaMapper.agendaListMapperEntityToDto(agendaOptional);
     }
 
     @Override
-    public List<TutorialsDto> findByPublished() {
-        List<Tutorials> publishedTutorials = agendaRepository.findByPublished(true);
-
-        return TutorialsMapper.tutorialsListMapperEntityToDto(publishedTutorials);
+    public ContactoDto guardar(ContactoDto agendaDto) {
+        Contacto agenda = AgendaMapper.agendaMapperDtoToEntity(agendaDto);
+        Contacto savedAgendaEntity = agendaRepository.save(agenda);
+        return AgendaMapper.agendaMapperEntityToDto(savedAgendaEntity);
     }
 
     @Override
-    public TutorialsDto save(TutorialsDto tutorialDto) {
-        Tutorials tutorials = TutorialsMapper.tutorialsMapperDtoToEntity(tutorialDto);
-        Tutorials savedTutorialEntity = agendaRepository.save(tutorials);
-        return TutorialsMapper.tutorialsMapperEntityToDto(savedTutorialEntity);
-    }
+    public ContactoDto actualizarContacto(ContactoDto contactoDto, String dni) {
+        Optional<Contacto> existingAgendaOptional = agendaRepository.findById(dni);
 
-    @Override
-    public TutorialsDto updateTutorial(TutorialsDto tutorial) {
-        Optional<Tutorials> existingTutorialOptional = agendaRepository.findById(tutorial.getId());
+        if (existingAgendaOptional.isPresent()) {
+            Contacto existingAgenda = existingAgendaOptional.get();
+            existingAgenda.setNombre(contactoDto.getNombre());
+            existingAgenda.setDni(contactoDto.getDni());
+            existingAgenda.setTelefono(contactoDto.getTelefono());
+            existingAgenda.setApellido(contactoDto.getApellido());
+            existingAgenda.setApellido(contactoDto.getApellido());
 
-        if (existingTutorialOptional.isPresent()) {
-            Tutorials existingTutorial = existingTutorialOptional.get();
-            existingTutorial.setTitle(tutorial.getTitle());
-            existingTutorial.setDescription(tutorial.getDescription());
-            existingTutorial.setPublished(tutorial.getPublished());
-
-            Tutorials updatedTutorial = agendaRepository.save(existingTutorial);
-
-            return TutorialsMapper.tutorialsMapperEntityToDto(updatedTutorial);
+            Contacto updatedAgenda = agendaRepository.save(existingAgenda);
+            return AgendaMapper.agendaMapperEntityToDto(updatedAgenda);
         } else {
             return null;
         }
     }
 
     @Override
-    public ResponseEntity deleteTutorial(String id) {
+    public ResponseEntity borrarContacto(String id) {
         try {
-            Optional<Tutorials> existingTutorialOptional = agendaRepository.findById(id);
-            if (existingTutorialOptional.isPresent()) {
+            Optional<Contacto> existingAgendaOptional = agendaRepository.findById(id);
+            if (existingAgendaOptional.isPresent()) {
                 agendaRepository.deleteById(id);
-                return ResponseEntity.ok("Tutorial eliminado exitosamente");
+                return ResponseEntity.ok("Contacto eliminado exitosamente");
             } else {
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Tutorial no encontrado con ID: " + id);
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Contacto no encontrado con ID: " + id);
             }
         } catch (Exception e) {
             e.printStackTrace();
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error al eliminar el tutorial");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error al eliminar el contacto");
         }
     }
 
     @Override
-    public ResponseEntity deleteAllTutorials() {
+    public ResponseEntity borrarAllContacts() {
         agendaRepository.deleteAll();
-        ResponseEntity.ok("Tutorial eliminado exitosamente");
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok().body("Todos los contactos eliminados exitosamente");
     }
-
 
 
 }

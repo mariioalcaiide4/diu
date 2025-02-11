@@ -11,7 +11,8 @@ public class Contacto {
 
     private String dni;
     private String nombre;
-    private String description;
-    private Boolean published;
+    private String apellido;
+    private Integer edad;
+    private Integer telefono;
 
 }
