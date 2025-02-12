@@ -17,5 +17,7 @@ public class ContactoDto {
     private String apellido;
     private Integer edad;
     private Integer telefono;
+    private String email;
+    private String direccion;
 
 }

@@ -1,0 +1,40 @@
+.contact-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 20px;
+  }
+  
+  .contact-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 15px;
+    width: 200px;
+    text-align: center;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+  }
+  
+  .contact-card button {
+    margin-top: 10px;
+    padding: 8px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .contact-card button:hover {
+    background-color: #0056b3;
+  }
+  
+  .modal-content {
+    text-align: center;
+    width: 400px;
+  }
+  
+  .modal-content button {
+    margin-top: 20px;
+  }
+  

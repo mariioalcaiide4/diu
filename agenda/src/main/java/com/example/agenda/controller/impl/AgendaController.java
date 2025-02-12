@@ -24,14 +24,14 @@ public class AgendaController implements AgendaAPI {
 
     @Override
     @GetMapping("/agenda/{dni}")
-    public Optional<ContactoDto> getContactById(@PathVariable String dni) {
-        return agendaService.getContactById(dni);
+    public Optional<ContactoDto> findByDni(@PathVariable String dni) {
+        return agendaService.findByDni(dni);
     }
 
     @Override
     @GetMapping("/agenda/nombre/{nombre}")
-    public List<ContactoDto> findByNameContaining(@PathVariable String nombre) {
-        return agendaService.findByNameContaining(nombre);
+    public List<ContactoDto> findByNombreContaining(@PathVariable String nombre) {
+        return agendaService.findByNombreContaining(nombre);
     }
 
     @Override

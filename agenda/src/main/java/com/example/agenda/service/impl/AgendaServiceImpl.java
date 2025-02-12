@@ -28,15 +28,15 @@ public class AgendaServiceImpl implements AgendaService {
     }
 
     @Override
-    public Optional<ContactoDto> getContactById(String dni) {
+    public Optional<ContactoDto> findByDni(String dni) {
         Optional<Contacto> tutorialOptional = agendaRepository.findById(dni);
 
         return tutorialOptional.map(AgendaMapper::agendaMapperEntityToDto);
     }
 
     @Override
-    public List<ContactoDto> findByNameContaining(String nombre) {
-        List<Contacto> agendaOptional = agendaRepository.findByNameContaining(nombre);
+    public List<ContactoDto> findByNombreContaining(String nombre) {
+        List<Contacto> agendaOptional = agendaRepository.findByNombreContaining(nombre);
 
         return AgendaMapper.agendaListMapperEntityToDto(agendaOptional);
     }
@@ -58,7 +58,9 @@ public class AgendaServiceImpl implements AgendaService {
             existingAgenda.setDni(contactoDto.getDni());
             existingAgenda.setTelefono(contactoDto.getTelefono());
             existingAgenda.setApellido(contactoDto.getApellido());
-            existingAgenda.setApellido(contactoDto.getApellido());
+            existingAgenda.setEdad(contactoDto.getEdad());
+            existingAgenda.setEmail(contactoDto.getEmail());
+            existingAgenda.setDireccion(contactoDto.getDireccion());
 
             Contacto updatedAgenda = agendaRepository.save(existingAgenda);
             return AgendaMapper.agendaMapperEntityToDto(updatedAgenda);

@@ -9,8 +9,8 @@ import java.util.Optional;
 public interface AgendaAPI {
 
     List<ContactoDto> getAllContacts(); //funciona
-    Optional<ContactoDto> getContactById(String dni); //funciona
-    List<ContactoDto> findByNameContaining(String nombre);
+    Optional<ContactoDto> findByDni(String dni); //funciona
+    List<ContactoDto> findByNombreContaining(String nombre);
     ContactoDto guardar(ContactoDto contactoDto); //funciona
     ContactoDto actualizarContacto(ContactoDto contactoDto, String dni); //funciona
     ResponseEntity borrarContacto(String dni); //funciona

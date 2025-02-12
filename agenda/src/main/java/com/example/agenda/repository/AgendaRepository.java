@@ -8,6 +8,6 @@ import java.util.Optional;
 
 public interface AgendaRepository extends MongoRepository<Contacto,String> {
     List<Contacto> findAll();
-    Optional<Contacto> getContactById(String dni);
-    List<Contacto> findByNameContaining(String nombre);
+    Optional<Contacto> findByDni(String dni);
+    List<Contacto> findByNombreContaining(String nombre);
 }

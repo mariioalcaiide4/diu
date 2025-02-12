@@ -16,6 +16,8 @@ public class AgendaMapper {
                 .apellido(contactoDto.getApellido())
                 .edad(contactoDto.getEdad())
                 .telefono(contactoDto.getTelefono())
+                .email(contactoDto.getEmail())
+                .direccion(contactoDto.getDireccion())
                 .build();
     }
 
@@ -27,6 +29,8 @@ public class AgendaMapper {
                 .apellido(contacto.getApellido())
                 .edad(contacto.getEdad())
                 .telefono(contacto.getTelefono())
+                .email(contacto.getEmail())
+                .direccion(contacto.getDireccion())
                 .build();
     }
 
