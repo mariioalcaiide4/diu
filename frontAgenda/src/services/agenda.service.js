@@ -5,7 +5,7 @@ class AgendaDataService {
     return http.get("/agenda");
   }
 
-  get(id) {
+  get(dni) {
     return http.get(`/agenda/${dni}`);
   }
 

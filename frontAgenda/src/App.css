@@ -1,42 +1,108 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+/* Navbar */
+.navbar { 
+  background-color: #000 !important; /* Negro sólido */
+  width: 100%; /* Ocupar todo el ancho de la pantalla */
+  height: 60px; /* Ajusta la altura según necesites */
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Distribuye los elementos */
+  padding: 0 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: fixed; /* Fija la navbar arriba */
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+/* Asegurar que el contenido no quede detrás de la navbar */
+body {
+  padding-top: 70px; /* Ajusta según la altura de la navbar */
+}
+
+.navbar-brand {
+  color: #fff !important;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.navbar-nav {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.nav-item {
+  list-style: none;
+}
+
+.nav-link {
+  color: #bbb !important;
+  font-size: 1.1rem;
+  transition: color 0.3s ease-in-out;
+}
+
+.nav-link:hover {
+  color: #fff !important;
+}
+
+
+/* Estiliza la tabla */
+
+.list {
+  display: flex;
+  justify-content: center; /* Centrar contenido horizontalmente */
+  align-items: center; /* Centrar contenido verticalmente */
+  height: 100vh; /* Ocupar toda la altura de la pantalla */
+  width: 100vw; /* Ocupar todo el ancho de la pantalla */
+}
+
+.col-md-4 {
+  width: 40%; /* Ajusta el tamaño para que ocupe más espacio */
+  padding: 20px;
+  border-right: 2px solid #ccc; /* Línea divisoria */
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.col-md-8 {
+  width: 60%;
+  padding: 20px;
+  text-align: center;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.table {
+  width: 100%;
+  border-collapse: collapse;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.table th, .table td {
+  border: 1px solid #ddd;
+  padding: 15px;
+  text-align: center;
 }
 
-.card {
-  padding: 2em;
+.table tr:hover {
+  background-color: #f1f1f1;
 }
 
-.read-the-docs {
-  color: #888;
+button {
+  margin: 10px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+button:first-of-type {
+  background-color: #007bff;
+  color: white;
+}
+
+button:last-of-type {
+  background-color: red;
+  color: white;
 }
