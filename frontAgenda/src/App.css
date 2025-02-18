@@ -16,7 +16,7 @@
 
 /* Asegurar que el contenido no quede detrás de la navbar */
 body {
-  padding-top: 70px; /* Ajusta según la altura de la navbar */
+  padding-top: 50px; /* Ajusta según la altura de la navbar */
 }
 
 .navbar-brand {

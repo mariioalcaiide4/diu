@@ -33,11 +33,11 @@ const AgendaList = () => {
   };
 
   return (
-    <div className="list">
+    <div className="lista">
       {/* 📌 Sección izquierda: Lista de clientes */}
       <div className="col-md-4">
         <h4>Lista de Clientes</h4>
-        <table className="table">
+        <table className="table-responsive table table-hover table-striped table-bordered border-dark table-sm table-dark table-striped table-bordered border-dark table-hover table-responsive table">  
           <thead>
             <tr>
               <th>Nombre</th>
@@ -93,3 +93,42 @@ const AgendaList = () => {
 };
 
 export default AgendaList;
+
+
+/*
+const cards = agenda.map((contacto, index) => (
+  <div className="col-md-3 my-3" key={index}>
+    <div 
+      className={`card ${selectedDni === contacto.dni ? 'color4' : 'color2'} text-white`}
+      onClick={() => handleClick(contacto.dni)}
+    >
+      <div className="card-body">
+        <h5 className="card-title text-center">Contacto {index + 1}</h5>
+        <p className="card-text">
+          DNI: {contacto.dni} <br /></p>
+          <p className='card-text'>
+          Nombre: {contacto.name} {contacto.apellido}
+        </p>
+
+        {selectedDni === contacto.dni && contactoSeleccionado && (
+<div className="contact-details">
+  <p>Teléfono: {contactoSeleccionado.telefono}</p>
+  <p>Email: {contactoSeleccionado.edad}</p>
+</div>
+)}
+      </div>
+    </div>
+  </div>
+));
+
+
+return (
+  <div className="container color1 text-white min-vh-100" style={{ fontFamily: 'Cursive' }}>
+    <Navbar dni={selectedDni} />
+    <div className="row justify-content-center">
+      {cards}
+    </div>
+  </div>
+);
+}
+*/

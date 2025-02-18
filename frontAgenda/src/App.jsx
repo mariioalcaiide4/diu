@@ -1,38 +1,26 @@
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import AgendaList from "./components/MostrarContactos";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "./App.css";
+import 'bootstrap/dist/css/bootstrap.min.css'; // Importa el CSS de Bootstrap
+import './App.css';
+import { BrowserRouter as Router, Routes, Route, Link, Navigate } from 'react-router-dom';
+import AñadirContacto from './components/AñadirContacto';
+import Navbar from './components/NavBar';
+import MostrarContactos from './components/MostrarContactos';
 
 function App() {
+
   return (
-    <div>
-      <Router>
-        <nav className="navbar">
-          <Link to={"/agenda"} className="navbar-brand">
-            Agenda
-          </Link>
-          <div className="navbar-nav mr-auto">
-            <li className="nav-item">
-              <Link to={"/agenda"} className="nav-link">
-                Agenda
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to={"/add"} className="nav-link">
-                Añadir
-              </Link>
-            </li>
-          </div>
-        </nav>
+    <Router>
+      <Navbar />
+      <div style={{ padding: "20px" }}>
         <Routes>
-          <Route path="/" element={<AgendaList />} />
-          <Route path="/agenda" element={<AgendaList />} />
+          <Route path="/" element={<MostrarContactos />} />
+          <Route path="/add" element={<AñadirContacto />} />
         </Routes>
-      </Router>
-    </div>
+      </div>
+    </Router>
   );
-}
-  
+};
 
 export default App;
-
+  
+  
+  
