@@ -25,12 +25,9 @@ class AgendaDataService {
     return http.delete(`/agenda`);
   }
 
- // findByTitle(title) {
- //   return http.get(`/tutorials?title=${title}`);
- // }
- findByNombre(nombre) {
+  findByNombre(nombre) {
      return http.get(`/agenda/nombre/${nombre}`);
-   }
+  }
 }
 
 export default new AgendaDataService();

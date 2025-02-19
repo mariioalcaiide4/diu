@@ -1,0 +1,83 @@
+.color1 {
+    background-color: #124e48;
+    color: rgb(10, 1, 1); /* Ensure text is readable */
+  }
+  .color2 {background-color: #29584a;}
+  .color3 {background-color: #417561;}
+  .color4 {background-color: #6b9e7c;}
+  .color5 {background-color: #a4dda7;}
+  
+/* 📌 Hacer que el formulario ocupe toda la pantalla */
+.container {
+    width: 100vw; /* Ocupa todo el ancho */
+    height: 100vh; /* Ocupa todo el alto */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* 📌 Hacer la columna transparente */
+  .form-container {
+    width: 100%;
+    max-width: 600px; /* Ajusta el ancho si es necesario */
+    background: rgba(0, 0, 0, 0.3); /* Transparente con leve oscurecimiento */
+    padding: 40px;
+    border-radius: 10px;
+    backdrop-filter: blur(10px); /* Efecto de desenfoque */
+  }
+  
+  /* 📌 Campos del formulario */
+  .form-label {
+    font-weight: bold;
+    color: black !important; /* Letras en negro */
+  }
+  
+  .form-control {
+    background: transparent !important;
+    border: none;
+    border-bottom: 2px solid black; /* Línea negra */
+    color: black !important; /* Texto en negro */
+    font-weight: bold;
+  }
+  
+  .form-control::placeholder {
+    color: rgba(0, 0, 0, 0.5); /* Color gris oscuro para el placeholder */
+  }
+  
+  .form-control:focus {
+    box-shadow: none;
+    outline: none;
+    border-bottom: 2px solid black; /* Línea negra en foco */
+  }
+  
+  /* 📌 Botón */
+  .btn-submit {
+    background: black !important;
+    color: white !important;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .btn-submit:hover {
+    background: #333 !important;
+  }
+  
+  
+  /* Efecto de fade-in al desplegar contenido */
+  .fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-5px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }

@@ -1,26 +1,22 @@
-import 'bootstrap/dist/css/bootstrap.min.css'; // Importa el CSS de Bootstrap
+import 'bootstrap/dist/css/bootstrap.min.css'; // Importa Bootstrap
 import './App.css';
-import { BrowserRouter as Router, Routes, Route, Link, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import AñadirContacto from './components/AñadirContacto';
 import Navbar from './components/NavBar';
 import MostrarContactos from './components/MostrarContactos';
 
 function App() {
-
   return (
     <Router>
-      <Navbar />
-      <div style={{ padding: "20px" }}>
+      <div className="app-container">
+        <Navbar />
         <Routes>
           <Route path="/" element={<MostrarContactos />} />
-          <Route path="/add" element={<AñadirContacto />} />
+          <Route path="/Añadir" element={<AñadirContacto />} />
         </Routes>
       </div>
     </Router>
   );
-};
+}
 
 export default App;
-  
-  
-  
