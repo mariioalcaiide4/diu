@@ -119,3 +119,26 @@ button:last-of-type {
 body {
   padding-top: 60px;
 }
+
+tabla-clientes {
+  font-size: 20px;  /* Aumenta el tamaño del texto */
+  width: 100%;      /* Usa todo el ancho disponible */
+  max-width: 900px; /* Máximo ancho para que no se expanda demasiado */
+}
+
+/* Aumenta la altura de las filas */
+.tabla-clientes tbody tr {
+  height: 60px; /* Hace las filas más altas */
+}
+
+/* Ajusta los encabezados */
+.tabla-clientes thead {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+/* Aumenta el padding de las celdas */
+.tabla-clientes td, .tabla-clientes th {
+  padding: 15px;
+  text-align: center;
+}

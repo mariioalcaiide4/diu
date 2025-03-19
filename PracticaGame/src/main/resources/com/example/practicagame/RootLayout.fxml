@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="PlayLeGame" />
+            <Menu mnemonicParsing="false" text="Videojuegos del Mes">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Action 1" />
+              </items>
+            </Menu>
+          <Menu mnemonicParsing="false" text="TOP 5">
+            <items>
+              <MenuItem mnemonicParsing="false" text="MAS VENDIDOS" />
+                  <MenuItem mnemonicParsing="false" text="TERROR" />
+                  <MenuItem mnemonicParsing="false" text="MULTIJUGADOR LOCAL" />
+                  <MenuItem mnemonicParsing="false" text="ARCADE" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Sobre Nosotros">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+</BorderPane>

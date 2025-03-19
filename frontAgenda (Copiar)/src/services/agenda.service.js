@@ -15,7 +15,7 @@ class AgendaDataService {
 
   update(dni, data) {
     return http.put(`/agenda/${dni}`, data);
-  }
+  }  
 
   delete(dni) {
     return http.delete(`/agenda/${dni}`);

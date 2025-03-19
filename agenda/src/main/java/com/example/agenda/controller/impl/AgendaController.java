@@ -1,6 +1,7 @@
 package com.example.agenda.controller.impl;
 
 import com.example.agenda.controller.AgendaAPI;
+import com.example.agenda.model.Contacto;
 import com.example.agenda.model.ContactoDto;
 import com.example.agenda.repository.AgendaRepository;
 import com.example.agenda.service.AgendaService;
@@ -40,10 +41,31 @@ public class AgendaController implements AgendaAPI {
         return agendaService.guardar(contactoDto);
     }
 
+    @PostMapping
+    public Contacto createContacto(@RequestBody Contacto contacto) {
+        if (contacto.getTutorialIds() == null) {
+            contacto.setTutorialIds(List.of()); // Si no se envían tutoriales, poner una lista vacía
+        }
+        return agendaRepository.save(contacto);
+    }
+
+
     @Override
     @PutMapping("/agenda/{dni}")
     public ContactoDto actualizarContacto(@RequestBody ContactoDto contactoDto,@PathVariable String dni) {
         return agendaService.actualizarContacto(contactoDto, dni);
+    }
+
+    // Asociar tutoriales a un contacto
+    @PutMapping("/{dni}/tutoriales")
+    public Contacto asociarTutoriales(@PathVariable String dni, @RequestBody List<String> tutorialIds) {
+        Optional<Contacto> contactoOpt = agendaRepository.findById(dni);
+        if (contactoOpt.isPresent()) {
+            Contacto contacto = contactoOpt.get();
+            contacto.setTutorialIds(tutorialIds); // Asignar los tutoriales
+            return agendaRepository.save(contacto);
+        }
+        return null;
     }
 
     @Override

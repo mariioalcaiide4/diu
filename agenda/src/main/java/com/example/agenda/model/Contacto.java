@@ -6,6 +6,7 @@ import lombok.Setter;
 import org.springframework.data.annotation.Id;
 
 import javax.swing.plaf.synth.SynthIcon;
+import java.util.List;
 
 @Getter
 @Setter
@@ -20,5 +21,5 @@ public class Contacto {
     private Integer telefono;
     private String email;
     private String direccion;
-
+    private List<String> tutorialIds; // Lista de IDs de tutoriales asociados
 }

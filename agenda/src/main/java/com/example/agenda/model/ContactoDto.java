@@ -3,6 +3,8 @@ package com.example.agenda.model;
 import lombok.*;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.List;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -19,5 +21,5 @@ public class ContactoDto {
     private Integer telefono;
     private String email;
     private String direccion;
-
+    private List<String> tutorialIds; // Lista de IDs de tutoriales
 }
