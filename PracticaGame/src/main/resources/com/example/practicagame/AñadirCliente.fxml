@@ -32,8 +32,8 @@
                 <Label alignment="CENTER" prefHeight="302.0" prefWidth="340.0" text="Nombre" GridPane.rowIndex="1" />
                 <Label alignment="CENTER" prefHeight="279.0" prefWidth="357.0" text="Apellido" GridPane.rowIndex="2" />
                 <Label alignment="CENTER" prefHeight="204.0" prefWidth="345.0" text="Direccion" GridPane.rowIndex="3" />
-                <Label alignment="CENTER" prefHeight="154.0" prefWidth="340.0" text="Localidad" GridPane.rowIndex="4" />
-                <Label alignment="CENTER" prefHeight="101.0" prefWidth="308.0" text="Provincia" GridPane.rowIndex="5" />
+                <Label alignment="CENTER" prefHeight="154.0" prefWidth="340.0" text="Correo Electronico" GridPane.rowIndex="4" />
+                <Label alignment="CENTER" prefHeight="101.0" prefWidth="308.0" text="Telefono" GridPane.rowIndex="5" />
             </children>
         </GridPane>
         <Button layoutX="520.0" layoutY="357.0" mnemonicParsing="false" onAction="#handleCancel" text="Cancelar" />
